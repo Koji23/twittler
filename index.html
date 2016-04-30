@@ -11,15 +11,17 @@
     <header>
       <h1>Twittler</h1>
     </header>
-    <main>
-      <button>Refresh</button>
-      <ul class="feed"></ul>
+    <main class="clearfix">
+      <section class="feed">
+        <button>Refresh</button>
+        <ul></ul>
+      </section>
     </main>
     <footer></footer>
     <script>
 
       $(document).ready(function(){
-        var $feed = $('main').find('ul');
+        var $feed = $('section').find('ul');
         var nextIndex = streams.home.length;
         var index = streams.home.length - 1;
 
@@ -35,11 +37,15 @@
           return String(hour) + ":" + min + ":" + sec + " " + ampm ;
         }
         function makeTweet(obj){
-          var $tweet = $('<li></li>');
+          var $tweet = $('<li class="clearfix"></li>');
+          var $imgContainer = $('<div class="img"></div>');
+          var $textContainer = $('<div class="txt"></div>');
           var $user = $('<h3></h3>').text('@' + obj.user);
           var $timeStamp = $('<i></i>').text(formatTime(obj.created_at));
           var $message = $('<p></p>').text(obj.message);
-          $tweet.append($user).append($timeStamp).append($message);
+          $tweet.attr('data-name', obj.user);
+          $textContainer.append($user).append($timeStamp).append($message);
+          $tweet.append($imgContainer).append($textContainer);
           return $tweet;
         }
         function addNew(){
@@ -56,7 +62,7 @@
           index -= 1;
         }
         $('main').on('click', 'button', addNew);
-        setInterval(addNew, 3000);
+        //setInterval(addNew, 3000);
       }); 
       console.log(streams.home[0]);
     </script>  
