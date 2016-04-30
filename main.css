@@ -4,9 +4,15 @@ body{
 
 header{
 	background-color: #FFF;
-	box-shadow: 1px 1px 5px #888888;
+	border: 1px solid #BBB;
 	margin: 2% 0;
 	height: 4em;
+}
+footer{
+	background-color: #FFF;
+	border: 1px solid #BBB;
+	margin: 2% 0;
+	height: 2em;
 }
 
 h1{
@@ -25,4 +31,15 @@ main{
   margin: 0 auto;
   padding: 1em;
   font-size: 1.4em;
+}
+
+button{
+  margin: 0 auto;
+}
+
+li {
+  border: 1px solid #BBB;
+  margin: 0.5em;
+  padding: 0.25em;
+
 }

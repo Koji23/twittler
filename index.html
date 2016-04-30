@@ -12,29 +12,35 @@
       <h1>Twittler</h1>
     </header>
     <main>
-
+      <button>Refresh</button>
+      <ul class="feed"></ul>
     </main>
     <footer></footer>
-  
     <script>
 
       $(document).ready(function(){
-        // Provided Code
-        var $body = $('main');
-        $body.html('');
-
+        var $feed = $('main').find('ul');
+        $feed.html("");
+        var nextIndex = streams.home.length;
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<li></li>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          $tweet.appendTo($feed);
           index -= 1;
         }
-        // My Code
-
+        
+        function addNew(){
+          for(index = nextIndex; index <= streams.home.length-1; index++){
+            var newTweet = streams.home[index];
+            var $newTweet = $('<li></li>');
+            $newTweet.text('@' + newTweet.user + ':' + newTweet.message);
+            $newTweet.prependTo($feed);
+          }
+        }
+        $('main').on('click', 'button', addNew);
       });
-
     </script>  
   </body>
 </html>
