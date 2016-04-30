@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>Jordan's Twittler</title>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
+    <header>
+      <h1>Twittler</h1>
+    </header>
+    <main>
+
+    </main>
+    <footer></footer>
+  
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
+        // Provided Code
+        var $body = $('main');
         $body.html('');
 
         var index = streams.home.length - 1;
@@ -19,9 +31,10 @@
           $tweet.appendTo($body);
           index -= 1;
         }
+        // My Code
 
       });
 
-    </script>
+    </script>  
   </body>
 </html>
