@@ -20,28 +20,45 @@
 
       $(document).ready(function(){
         var $feed = $('main').find('ul');
-        $feed.html("");
         var nextIndex = streams.home.length;
         var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<li></li>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($feed);
-          index -= 1;
+
+        function formatTime(time){
+          var hour = time.getHours();
+          var min = time.getMinutes();
+          var sec = time.getSeconds();
+          var ampm = "AM";
+          if(hour > 12) ampm = "PM";
+          if(ampm = "PM") hour -= 12;
+          if(min < 10) min = "0" + String(min);
+          if(sec < 10) sec = "0" + String(sec);
+          return String(hour) + ":" + min + ":" + sec + " " + ampm ;
         }
-        
+        function makeTweet(obj){
+          var $tweet = $('<li></li>');
+          var $user = $('<h3></h3>').text('@' + obj.user);
+          var $timeStamp = $('<i></i>').text(formatTime(obj.created_at));
+          var $message = $('<p></p>').text(obj.message);
+          $tweet.append($user).append($timeStamp).append($message);
+          return $tweet;
+        }
         function addNew(){
           for(index = nextIndex; index <= streams.home.length-1; index++){
-            var newTweet = streams.home[index];
-            var $newTweet = $('<li></li>');
-            $newTweet.text('@' + newTweet.user + ':' + newTweet.message);
+            var $newTweet = makeTweet(streams.home[index]);
             $newTweet.prependTo($feed);
           }
         }
+        //Execution
+        $feed.html("");
+        while(index >= 0){   
+          var $tweet = makeTweet(streams.home[index]);
+          $tweet.appendTo($feed);
+          index -= 1;
+        }
         $('main').on('click', 'button', addNew);
         setInterval(addNew, 3000);
-      });
+      }); 
+      console.log(streams.home[0]);
     </script>  
   </body>
 </html>
