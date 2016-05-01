@@ -34,7 +34,7 @@
         var $feed = $('section').find('ul');
         var nextIndex = streams.home.length;
         var index;
-        var ooo;
+        var currentTime = new Date();
 
         function formatTime(time){
           var hour = time.getHours();
@@ -46,6 +46,11 @@
           if(min < 10) min = "0" + String(min);
           if(sec < 10) sec = "0" + String(sec);
           return String(hour) + ":" + min + ":" + sec + " " + ampm ;
+        }
+        function formatUserFriendlyTime(time){
+          var hoursAgo;
+          var minutesAgo;
+          var secondsAgo = startTime.getSeconds;
         }
         function makeTweet(obj){
           var $tweet = $('<li class="clearfix"></li>');
@@ -84,7 +89,9 @@
             index--;
           }
         }
-        /*function postTweet(){
+
+        /* not working
+        function postTweet(){
           var tweetData = {};
           tweetData.created_at = new Date();
           tweetData.user = $('form').find('#name').val();
@@ -93,15 +100,18 @@
           streams.users[tweetData.user] = tweetData;
           addnew();
         }*/
-        function postTweet(){
+        function postTweet2(){
+          var visitor = $('form').find('#name').val();
           var msg = $('form').find('#msg').val();
           writeTweet(msg);
+          homeStream();
         }
         //Execution
+
         homeStream();
         $('section').on('click', '.refreshHome', addNew);
         $('section').on('click', 'a', userStream);
-        $('form').submit(postTweet);
+        $('form').submit(postTweet2);
         //setInterval(addNew, 3000);
         console.log(streams);
       }); 
