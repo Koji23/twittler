@@ -1,19 +1,66 @@
-body{
-	background-color: #FFF;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-header{
-	background-color: #FFF;
-	border: 1px solid #BBB;
-	margin: 2% 0;
-	height: 4em;
+/* Main.css */
+
+*{
+	border: 1px dotted #BBB;
 }
-footer{
-	background-color: #FFF;
-	border: 1px solid #BBB;
-	margin: 2% 0;
-	height: 2em;
+/* */
+.clearfix{
+	overflow: auto;
 }
+
+body{
+  background-color: #84EEFF;
+}
+
 
 h1{
 	color: #000;
@@ -23,23 +70,81 @@ h1{
 	font-size: 3em;
 }
 
+/* Main Styles */
 main{
   background-color: #FFF;
   color:#000;
   border: 1px solid #BBB;
-  width: 60%;
-  margin: 0 auto;
+  width: 80%;
+  margin: 1.5em auto;
   padding: 1em;
   font-size: 1.4em;
 }
 
-button{
-  margin: 0 auto;
+.breadcrumb{
+
 }
+button{
+  font-size: 0.75em;
+  background-color: lightgreen;
+  border-radius: 8%;
+  display: inline-block;
+  float: left;
+}
+
+section{ 
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid red;
+  padding: 1em;
+}
+ ul{
+  clear: both;
+  border: 1px solid #BBB;
+ }
+
+/* Feed Styles */
 
 li {
   border: 1px solid #BBB;
   margin: 0.5em;
   padding: 0.25em;
+  font-size: 0.7em;
+}
 
+li .txt{
+	float: right;
+	border: 1px solid #BBB;
+	width: 70%;
+	text-align: left;
+	padding: 5px;
+}
+
+.txt h3{
+	display: inline;
+	float: left;
+}
+
+.txt h3:hover{
+	text-decoration: underline;
+	color: blue;
+}
+
+.txt i{
+	float: right;
+	color: #48C;
+}
+
+.txt p{
+	clear: both;
+}
+
+
+.img{
+	float: left;
+	display: inline-block;
+	height: 128px;
+	width: 128px;
+	background-repeat: no-repeat;
+	background-image: url("img/1462076343_user-alt.png");
 }

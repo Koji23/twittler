@@ -8,22 +8,20 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <header>
-      <h1>Twittler</h1>
-    </header>
     <main class="clearfix">
-      <section class="feed">
-        <button>Refresh</button>
+      <h1>Twittler</h1>
+      <section>
+        <h2 class="streamTitle"></h2>
+        <button class="refreshHome">Refresh Home</button>
         <ul></ul>
       </section>
     </main>
-    <footer></footer>
     <script>
 
       $(document).ready(function(){
         var $feed = $('section').find('ul');
         var nextIndex = streams.home.length;
-        var index = streams.home.length - 1;
+        var index;
 
         function formatTime(time){
           var hour = time.getHours();
@@ -31,7 +29,7 @@
           var sec = time.getSeconds();
           var ampm = "AM";
           if(hour > 12) ampm = "PM";
-          if(ampm = "PM") hour -= 12;
+          if(ampm === "PM") hour -= 12;
           if(min < 10) min = "0" + String(min);
           if(sec < 10) sec = "0" + String(sec);
           return String(hour) + ":" + min + ":" + sec + " " + ampm ;
@@ -54,14 +52,30 @@
             $newTweet.prependTo($feed);
           }
         }
-        //Execution
-        $feed.html("");
-        while(index >= 0){   
-          var $tweet = makeTweet(streams.home[index]);
-          $tweet.appendTo($feed);
-          index -= 1;
+        function homeStream(){
+          index = streams.home.length - 1;
+          $feed.html("");
+          while(index >= 0){   
+            var $tweet = makeTweet(streams.home[index]);
+            $tweet.appendTo($feed);
+            index--;
+          }
         }
-        $('main').on('click', 'button', addNew);
+        function userStream(){
+          var userName = $(this).text().slice(1);
+          index = streams.users[userName].length - 1;
+          $feed.html("");
+          while(index >= 0){
+            var $tweet = makeTweet(streams.users[userName][index]);
+            $tweet.appendTo($feed);
+            index--;
+          }
+          
+        }
+        //Execution
+        homeStream();
+        $('section').on('click', '.refreshHome', addNew);
+        $('section').on('click', 'h3', userStream);
         //setInterval(addNew, 3000);
       }); 
       console.log(streams.home[0]);
