@@ -9,11 +9,23 @@
   </head>
   <body>
     <main class="clearfix">
-      <h1>Twittler</h1>
+      <header>
+        <h1>Twittler</h1>
+      </header>
+      <aside>
+        <h2>Post a Tweet!</h2>
+        <form>
+          <label for="name">User Name</label>
+          <input type="text" value="@anonymous" id="name"/>
+          <label id="name">Message</label>
+          <textarea id="msg" placeholder="Write your message here!" autofocus></textarea>
+          <input type="submit" value="Post Tweet">
+        </form>
+      </aside>
       <section>
         <h2 class="streamTitle"></h2>
-        <button class="refreshHome">Refresh Home</button>
-        <ul></ul>
+        <button class="refreshHome">Refresh Home!</button>
+        <ul class="feed"></ul>
       </section>
     </main>
     <script>
@@ -22,6 +34,7 @@
         var $feed = $('section').find('ul');
         var nextIndex = streams.home.length;
         var index;
+        var ooo;
 
         function formatTime(time){
           var hour = time.getHours();
@@ -38,11 +51,11 @@
           var $tweet = $('<li class="clearfix"></li>');
           var $imgContainer = $('<div class="img"></div>');
           var $textContainer = $('<div class="txt"></div>');
-          var $user = $('<h3></h3>').text('@' + obj.user);
+          var $user = $('<a src="#"></a>').text('@' + obj.user);
           var $timeStamp = $('<i></i>').text(formatTime(obj.created_at));
           var $message = $('<p></p>').text(obj.message);
           $tweet.attr('data-name', obj.user);
-          $textContainer.append($user).append($timeStamp).append($message);
+          $textContainer.append($timeStamp).append($user).append($message);
           $tweet.append($imgContainer).append($textContainer);
           return $tweet;
         }
@@ -70,15 +83,28 @@
             $tweet.appendTo($feed);
             index--;
           }
-          
+        }
+        /*function postTweet(){
+          var tweetData = {};
+          tweetData.created_at = new Date();
+          tweetData.user = $('form').find('#name').val();
+          tweetData.message = $('form').find('#msg').val();
+          streams.home.push(tweetData) 
+          streams.users[tweetData.user] = tweetData;
+          addnew();
+        }*/
+        function postTweet(){
+          var msg = $('form').find('#msg').val();
+          writeTweet(msg);
         }
         //Execution
         homeStream();
         $('section').on('click', '.refreshHome', addNew);
-        $('section').on('click', 'h3', userStream);
+        $('section').on('click', 'a', userStream);
+        $('form').submit(postTweet);
         //setInterval(addNew, 3000);
+        console.log(streams);
       }); 
-      console.log(streams.home[0]);
     </script>  
   </body>
 </html>

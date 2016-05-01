@@ -58,93 +58,128 @@ table {
 }
 
 body{
-  background-color: #84EEFF;
+  background-color: #AEEAFF;
 }
 
 
-h1{
-	color: #000;
-	display: block;
-	margin: auto;
-	width: 120px;
-	font-size: 3em;
-}
 
-/* Main Styles */
+
+
+/************** Main Styles **************/
 main{
-  background-color: #FFF;
   color:#000;
   border: 1px solid #BBB;
-  width: 80%;
+  width: 50%;
   margin: 1.5em auto;
-  padding: 1em;
-  font-size: 1.4em;
+  box-shadow: 0 0 5px #AAA;
+  border-radius: 1%;
+  background-color: rgba(255,255,255, 0.85);
+}
+header{
+	background: linear-gradient(#43B9FF, #1F93FF);
 }
 
-.breadcrumb{
-
+h1{
+	color: #FFF;
+	font-size: 1.5em;
+	padding: 3px 3px 3px 14px;
 }
 button{
-  font-size: 0.75em;
-  background-color: lightgreen;
-  border-radius: 8%;
-  display: inline-block;
-  float: left;
+  font-size: 1.2em;
+  border: 1px dotted #bbb;
+  color: #FF9212;
+  background: none;
+}
+button:active{
+	color: #FF5812;
 }
 
 section{ 
-  width: 80%;
-  margin: 0 auto;
-  border: 1px solid red;
-  padding: 1em;
+  border: 1px solid #bbb;
+  padding: 5px;
 }
- ul{
-  clear: both;
+/************* Post Widget Styles **************/
+aside{	
+  border: 1px solid #BBB;
+}
+aside h2{
+	color: #FF9212;
+	font-size: 1.2em;
+	margin: 5px 5px 5px 15px;
+}
+form{
+	border: 1px dotted #bbb;
+	margin: 0 1em 1em 1em;
+	padding: 0.5em;
+}
+form label{
+	font-size: 1em;
+	font-weight: bold;
+	color: #1B316B;
+}
+form input{
+	display: block;
+	margin: 2px 2px 10px 2px;
+}
+form textarea{
+	display: block;
+	width: 60%;
+	height: 5em;
+}
+form input[type="submit"]{
+	margin: 5px;
+	border: 2px solid #bbb;
+	background: linear-gradient(#FFF, #AEEAFF);	
+	border-radius: 10%;
+}
+/************* Feed Styles **************/
+.feed {
   border: 1px solid #BBB;
  }
 
-/* Feed Styles */
-
-li {
+.feed li {
   border: 1px solid #BBB;
-  margin: 0.5em;
   padding: 0.25em;
   font-size: 0.7em;
 }
-
-li .txt{
-	float: right;
-	border: 1px solid #BBB;
-	width: 70%;
-	text-align: left;
-	padding: 5px;
-}
-
-.txt h3{
-	display: inline;
+.feed .img{
 	float: left;
+	display: inline-block;
+	height: 48px;
+	width: 48px;
+	border: 1px solid #bbb;
+	border-radius: 5%;
+	background-repeat: no-repeat;
+	background-color: #EEE;
+	background-image: url("img/1462076343_user-alt.png");
+	background-size: 100%;
+}
+.feed li .txt{
+	float: right;
+	width: 85%;
+	border: 1px solid #BBB;
+	text-align: left;
+	padding: 4px;
 }
 
-.txt h3:hover{
-	text-decoration: underline;
-	color: blue;
+.feed .txt a{
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #1B316B;
 }
 
-.txt i{
+.feed .txt a:active{
+	color: #3B6AE8;
+}
+
+.feed .txt i{
 	float: right;
 	color: #48C;
 }
 
-.txt p{
+.feed .txt p{
 	clear: both;
+	font-size: 1.35em;
+	line-height: 1.2;
 }
 
-
-.img{
-	float: left;
-	display: inline-block;
-	height: 128px;
-	width: 128px;
-	background-repeat: no-repeat;
-	background-image: url("img/1462076343_user-alt.png");
-}
