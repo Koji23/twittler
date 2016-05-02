@@ -172,7 +172,7 @@ form input[type="submit"]{
 	color: #3B6AE8;
 }
 
-.feed .txt i{
+.feed .txt time{
 	float: right;
 	color: #48C;
 }
