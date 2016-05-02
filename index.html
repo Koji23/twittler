@@ -58,7 +58,9 @@
           var $imgContainer = $('<div class="img"></div>');
           var $textContainer = $('<div class="txt"></div>');
           var $user = $('<a src="#"></a>').text('@' + obj.user);
-          var $timeStamp = $('<time></time>').text(formatTime(obj.created_at));
+          var $timeStamp = $('<time class="timeago"></time>').text(jQuery.timeago(obj.created_at));
+          $timeStamp.attr('title', formatTime(obj.created_at));
+          $timeStamp.attr('datetime', obj.created_at.toISOString());
           var $message = $('<p></p>').text(obj.message);
           $tweet.attr('data-name', obj.user);
           $textContainer.append($timeStamp).append($user).append($message);
@@ -107,7 +109,7 @@
         }
       
         //Execution
-
+        jQuery("time.timeago").timeago();
         homeStream();
         $('section').on('click', '.refreshHome', addNew);
         $('section').on('click', 'a', userStream);
