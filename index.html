@@ -16,7 +16,7 @@
         <h2>Post a Tweet!</h2>
         <form>
           <label for="name">User Name</label>
-          <input type="text" value="@anonymous" id="name"/>
+          <input type="text" value="anonymous" id="name"/>
           <label id="name">Message</label>
           <textarea id="msg" placeholder="Write your message here!" autofocus></textarea>
           <input type="submit" value="Post Tweet">
@@ -90,29 +90,27 @@
           }
         }
 
-        /* not working
-        function postTweet(){
+         
+        function postTweet(event){
+          event.preventDefault();
           var tweetData = {};
           tweetData.created_at = new Date();
           tweetData.user = $('form').find('#name').val();
           tweetData.message = $('form').find('#msg').val();
           streams.home.push(tweetData) 
-          streams.users[tweetData.user] = tweetData;
-          addnew();
-        }*/
-        function postTweet2(){
-          //also not working
-          var visitor = $('form').find('#name').val();
-          var msg = $('form').find('#msg').val();
-          writeTweet(msg);
-          homeStream();
+          if(streams.users[tweetData.user] === undefined){
+            streams.users[tweetData.user] = [];
+          } 
+          streams.users[tweetData.user].push(tweetData)
+          addNew();
         }
+      
         //Execution
 
         homeStream();
         $('section').on('click', '.refreshHome', addNew);
         $('section').on('click', 'a', userStream);
-        $('form').submit(postTweet2);
+        $('form').submit(postTweet);
         //setInterval(addNew, 3000);
         console.log(streams);
       }); 
