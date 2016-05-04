@@ -49,16 +49,14 @@ table {
 
 /* Main.css */
 
-*{
-	border: 1px dotted #BBB;
-}
+
 /* */
 .clearfix{
 	overflow: auto;
 }
 
 body{
-  background-color: #AEEAFF;
+  background: url('weather.png');
 }
 
 
@@ -89,6 +87,7 @@ button{
   border: 1px dotted #bbb;
   color: #FF9212;
   background: none;
+  margin-bottom: 5px;
 }
 button:active{
 	color: #FF5812;
@@ -100,7 +99,7 @@ section{
 }
 /************* Post Widget Styles **************/
 aside{	
-  border: 1px solid #BBB;
+  /*border: 1px solid #BBB;*/
 }
 aside h2{
 	color: #FF9212;
@@ -108,7 +107,6 @@ aside h2{
 	margin: 5px 5px 5px 15px;
 }
 form{
-	border: 1px dotted #bbb;
 	margin: 0 1em 1em 1em;
 	padding: 0.5em;
 }
@@ -134,7 +132,7 @@ form input[type="submit"]{
 }
 /************* Feed Styles **************/
 .feed {
-  border: 1px solid #BBB;
+  /*border: 1px solid #BBB;*/
  }
 
 .feed li {
